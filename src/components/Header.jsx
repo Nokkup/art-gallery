@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className={styles.header}>
             <div className={styles.header__logo}>
-                <a href="/" tabIndex={-1}>
+                <a href="https://github.com/Nokkup/art-gallery" tabIndex={-1}>
                     <img src="logo.svg" alt="logo" />
                 </a>
             </div>
