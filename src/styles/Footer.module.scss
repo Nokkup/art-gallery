@@ -1,0 +1,29 @@
+.footer {
+    grid-area: footer;
+
+    font-family: 'Quicksand', sans-serif;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 40px;
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.footer__year::before {
+    content: "©";
+}
+
+.footer__link {
+    padding-top: 5px;
+    text-decoration: none;
+    color: var(--black)
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+    color: var(--light-blue);
+}

@@ -1,0 +1,29 @@
+.header {
+    grid-area: header;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 90px;
+    background: var(--white);
+
+    font-family: 'Quicksand', sans-serif;
+}
+
+.header__title {
+    display: inline;
+}
+
+.header__logo img{
+    height: 50px;
+    width: 50px;
+    padding: 0 10px;
+}
+
+@media (max-width: 769px) {
+    .header__title {
+        display: none;
+    }
+}

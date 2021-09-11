@@ -1,0 +1,49 @@
+.selector {
+    grid-area: selector;
+
+    display: grid;
+    grid-template-columns: auto 70px;
+    grid-template-rows: 30px;
+    align-self: center;
+    justify-self: center;
+    max-width: 400px;
+    padding-bottom: 30px;
+}
+
+.selector__button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    line-height: 1.1;
+
+    background: var(--white);
+
+    border: 1px solid var(--black);
+    border-left: transparent;
+    border-radius: 0 8px 8px 0;
+
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.selector__button:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.selector__select {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    line-height: 1.1;
+
+    background: transparent;
+
+    border: 1px solid var(--black);
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+}
+
+@media (max-width: 481px) {
+    .selector__select {
+        max-width: 200px;
+    }
+}

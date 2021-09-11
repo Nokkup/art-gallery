@@ -1,0 +1,80 @@
+.gallery__card {
+    align-self: center;
+    justify-self: center;
+
+    max-width: 30vw;
+    max-height: 30vh;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border: 1px solid var(--black);
+
+    padding: 10px;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.gallery__card:hover {
+    padding: 0;
+    transform: scale(1.1);
+}
+
+.popup__content__image {
+    max-width: 700px;
+}
+
+.popup__content__title::before {
+    content: "Title: ";
+}
+
+.popup__content__author::before {
+    content: "Author: ";
+}
+
+.popup__content__info::before {
+    content: ":( ";
+}
+
+.popup__content__years::before {
+    content: "Years of creation: ";
+}
+
+.popup__content__tag {
+    color: var(--light-blue);
+}
+
+.popup__content__tag::before {
+    content: "#";
+}
+
+@media (max-width: 769px) {
+
+    .gallery__card{
+        max-width: 250px;
+        max-height: auto;
+        transition: all 0.5s ease-out;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .popup__content__image {
+        max-width: 400px;
+    }
+
+}
+
+@media (max-width: 481px) {
+
+    .gallery__card {
+        width: auto;
+        height: auto;
+    }
+
+    .gallery__card:hover {
+        padding: 10px;
+        transform: scale(1);
+    }
+
+    .popup__content__image {
+        display: none;
+    }
+}
