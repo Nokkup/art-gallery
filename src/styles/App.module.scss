@@ -15,7 +15,7 @@ body, html {
 
 body {
     background: var(--white);
-    background: repeating-linear-gradient(90deg, var(--white) 0 25%, var(--light-gray) 25% 25.1%);
+    background: repeating-linear-gradient(90deg, transparent, transparent 25%, var(--light-gray) 25% 25.2%);
 }
 
 .wrapper {
