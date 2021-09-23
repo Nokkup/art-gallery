@@ -1,6 +1,6 @@
 import styles from "../styles/Popup.module.scss";
 
-function Popup({ isActive, setActive, children }) {
+const Popup = ({ isActive, setActive, children }) => {
 
     const handleKeyPress = (e) => {
         if (e.keyCode === 13) {

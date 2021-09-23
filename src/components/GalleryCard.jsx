@@ -3,7 +3,7 @@ import API from "../api/api";
 import styles from "../styles/GalleryCard.module.scss";
 import Popup from "./Popup";
 
-const ImageCard = ({ id }) => {
+const GalleryCard = ({ id }) => {
     const [description, setDescription] = useState({});
     const [isActive, setActive] = useState(false);
 
@@ -100,4 +100,4 @@ const ImageCard = ({ id }) => {
 
 }
 
-export default ImageCard;
+export default GalleryCard;

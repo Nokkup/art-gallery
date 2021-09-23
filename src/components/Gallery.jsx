@@ -39,8 +39,8 @@ const Gallery = ({ idsList, departments }) => {
         setRefresh(true);
     }
 
-    const handleSetNewDepartment = (dep) => {
-        setCurrentDepartment(dep);
+    const handleSetNewDepartment = (newDep) => {
+        setCurrentDepartment(newDep);
         setRefresh(true);
     }
 
