@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { trackPromise } from 'react-promise-tracker';
-import axios from "axios";
 import API from "./api/api";
 import styles from "./styles/App.module.scss";
 import Gallery from "./components/Gallery";
@@ -16,37 +15,45 @@ const App = () => {
   useEffect(() => {
 
     let ids = {};
-    let promises = [];
 
     trackPromise(
-      API.get(`/departments`)
+    API.get(`/departments`)
         .then(res => {
-          setDepartments(res.data.departments);
-          return res.data.departments;
+            setDepartments(res.data.departments);
+            return res.data.departments;
         })
         .then(res => {
-          res.forEach(el => {
-            promises.push(API.get("/search", {
-              params:
-              {
-                departmentId: el.departmentId,
-                hasImages: true,
-                q: "art"
-              }
-            }))
-          })
-          trackPromise(
-            axios.all(promises)
-              .then(res => {
-                res.forEach(el => ids[el.config.params.departmentId] = el.data.objectIDs);
-                setlistIDsByCategory(ids);
-              })
-          )
+            let defaultCategoryId = 0;
+
+            res.forEach(el => {
+                if(el.displayName === "Photographs"){
+                    defaultCategoryId = el.departmentId;
+                }
+            })
+
+            API.get("/search", { params: { departmentId: defaultCategoryId, hasImages: true, q: "art"}})
+                .then(res => {
+                    ids[res.config.params.departmentId] = res.data.objectIDs;
+                    setlistIDsByCategory(ids);
+                })
+            
+            const otherRes = res.filter(el => el.departmentId !== defaultCategoryId);
+
+            const loadOtherRes = otherRes => {
+                otherRes.forEach(el => {
+                    API.get("/search", { params: { departmentId: el.departmentId, hasImages: true, q: "art"}})
+                    .then(res => {
+                        ids[res.config.params.departmentId] = res.data.objectIDs;
+                        setlistIDsByCategory(ids);
+                    })
+                })
+            }
+
+            setTimeout(loadOtherRes, 3000, otherRes);
+        }))
+        .catch(() => {
+            setIsError(true);
         })
-    )
-      .catch(() => {
-        setIsError(true);
-      })
 
   }, [])
 

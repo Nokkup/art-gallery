@@ -43,7 +43,6 @@ const GalleryCard = ({ id }) => {
                 onClick={() => setActive(true)}
                 onKeyDown={handleKeyPress}
                 tabIndex={3}
-                lazy
             >
             </img>
 
