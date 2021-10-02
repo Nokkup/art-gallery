@@ -16,13 +16,14 @@ const GalleryCard = ({ id }) => {
                 information.author = res.data.artistDisplayName;
                 information.title = res.data.title;
                 information.wiki = res.data.artistWikidata_URL;
+                
                 if (res.data.objectBeginDate !== res.data.objectEndDate) {
                     information.years = `${res.data.objectBeginDate} — ${res.data.objectEndDate}`;
                 }
                 else {
                     information.years = res.data.objectBeginDate;
                 }
-                res.data.tags && (information.tags = res.data.tags.map(el => el.term));
+                information.tags = res.data.tags?.map(el => el.term) || [];
                 setDescription(information);
             })
     }, [id])
@@ -42,33 +43,33 @@ const GalleryCard = ({ id }) => {
                 onClick={() => setActive(true)}
                 onKeyDown={handleKeyPress}
                 tabIndex={3}
+                lazy
             >
             </img>
 
             <Popup isActive={isActive} setActive={setActive}>
-                <img className={styles.popup__image} src={description.imageSmallSize} alt={description.title}></img>
-                {
-                    description.title &&
-                    <p className={styles.popup__content__title}>{description.title}</p>
-                }
-                {
-                    description.author &&
-                    <p className={styles.popup__content__author}>{description.author}</p>
-                }
-                {
-                    description.years &&
-                    <p className={styles.popup__content__years}>{description.years}</p>
-                }
+                <div className={styles.gallery__popup__card}>
+                <figure>
+                    <img 
+                        className={styles.gallery__popup__image} 
+                        src={description.imageSmallSize} 
+                        alt={description.title} 
+                    />
+                    <figcaption>
+                        <p className={styles.gallery__popup__title}>{description.title || "unknown"}</p>
+                        <p className={styles.gallery__popup__author}>{description.author || "unknown"}</p>
+                        <p className={styles.gallery__popup__years}>{description.years || "undated"}</p>
+                    </figcaption>
                 {
                     description.wiki &&
                     <p>
                         <a
-                            className={styles.popup__content__url}
+                            className={styles.gallery__popup__url}
                             href={description.wiki}
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Wikidata Page
+                            Wiki Page
                         </a>
                     </p>
                 }
@@ -76,7 +77,7 @@ const GalleryCard = ({ id }) => {
                     description.imageFullSize &&
                     <p>
                         <a
-                            className={styles.popup__content__url}
+                            className={styles.gallery__popup__url}
                             href={description.imageFullSize}
                             target="_blank"
                             rel="noreferrer"
@@ -87,13 +88,10 @@ const GalleryCard = ({ id }) => {
                 }
                 {
                     description.tags &&
-                    description.tags.map((tag, i) => <span className={styles.popup__content__tag} key={i}>{tag}</span>)
+                    description.tags.map((tag, i) => <span className={styles.gallery__popup__tag} key={i}>{tag}</span>)
                 }
-                {
-                    Object.keys(description).some(el => description[el])
-                        ? null
-                        : <p className={styles.popup__content__info}>No information about this item</p>
-                }
+                </figure>
+                </div>
             </Popup>
         </>
     )
