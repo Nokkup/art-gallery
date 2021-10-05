@@ -1,26 +1,39 @@
+@import "variables.scss";
 
-:root{
-    --white: rgb(255, 255, 255);
-    --black: rgb(0, 0, 0);
-    --grey: rgb(85, 84, 84);
-    --light-gray: rgb(224, 220, 220);
-    --light-violet: rgb(240, 233, 252);
-    --light-blue: rgb(126, 148, 223);
-}
-
-body, html {
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background: var(--white);
-    background: repeating-linear-gradient(90deg, transparent, transparent 25%, var(--light-gray) 25% 25.2%);
+    font-family: "Quicksand", sans-serif;
+
+    background: $primary-color;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 25%,
+        $background-lines-color 25% 25.2%
+    );
 }
 
 .wrapper {
     display: grid;
-    grid-template: "header"
-                    "main"
-                   "footer";
+    grid-template-rows: 10vh 1fr auto;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 0.2rem;
+
+    transition: 0.3s;
+
+    &:hover {
+        background-size: 100% 0.1rem;
+    }
 }

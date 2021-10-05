@@ -1,49 +1,43 @@
+@import "variables.scss";
+
 .selector {
-    grid-area: selector;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem auto 0;
 
-    display: grid;
-    grid-template-columns: auto 70px;
-    grid-template-rows: 30px;
-    align-self: center;
-    justify-self: center;
     max-width: 400px;
-    padding-bottom: 30px;
-}
 
-.selector__button {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    line-height: 1.1;
+    &__select {
+        font-family: "Quicksand", sans-serif;
+        font-size: 1rem;
+        line-height: 1.1;
 
-    background: var(--white);
+        background: $primary-color;
+        border: 1px solid $second-color;
 
-    border: 1px solid var(--black);
-    border-left: transparent;
-    border-radius: 0 8px 8px 0;
+        padding: 0.25em 0.5em;
+        cursor: pointer;
+    }
 
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-}
+    &__button {
+        font-family: "Quicksand", sans-serif;
+        font-size: 1rem;
+        line-height: 1.1;
+        width: 5rem;
 
-.selector__button:hover {
-    background: var(--black);
-    color: var(--white);
-}
+        color: $primary-color;
+        background: $second-color;
 
-.selector__select {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 1rem;
-    line-height: 1.1;
+        border: 1px solid $second-color;
+        border-left: transparent;
+        border-radius: 0 0.8rem 0.8rem 0;
 
-    background: transparent;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
 
-    border: 1px solid var(--black);
-    padding: 0.25em 0.5em;
-    cursor: pointer;
-}
-
-@media (max-width: 481px) {
-    .selector__select {
-        max-width: 200px;
+        &:hover {
+            background: $primary-color;
+            color: $second-color;
+        }
     }
 }

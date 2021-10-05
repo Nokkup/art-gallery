@@ -1,27 +1,29 @@
+@import "variables.scss";
+
 .loader {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 1px);
-}
+    transform: translate3d(-50%, -50%, 0);
 
-.loader > div {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid var(--black);
-    animation: loader 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    & > div {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid $second-color;
+        animation: loader 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
 }
 
 @keyframes loader {
     0% {
-      transform: rotateY(0deg);
+        transform: rotateY(0deg);
     }
     60% {
-      transform: rotateY(1800deg);
-      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
     }
     100% {
-      transform: rotateY(3600deg);
+        transform: rotateY(3600deg);
     }
 }

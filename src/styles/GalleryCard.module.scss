@@ -1,89 +1,86 @@
+@import "variables.scss";
+
 .gallery__card {
     align-self: center;
     justify-self: center;
 
-    max-width: 30vw;
-    max-height: 30vh;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 35vw;
+    max-height: 35vh;
+    padding: 0.6rem;
 
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    border: 1px solid var(--black);
-
-    padding: 10px;
+    box-shadow: $first-shadow-color 0px 50px 100px -20px,
+        $second-shadow-color 0px 30px 60px -30px;
+    border: 1px solid $second-color;
 
     transition: all 0.2s ease-in-out;
-}
 
-.gallery__card:hover {
-    padding: 0;
-    transform: scale(1.1);
-}
-
-.gallery__popup__card {
-    margin: 0;
-    padding: 10px 0;
-    max-width: 700px;
-}
-
-.gallery__popup__image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-}
-
-.gallery__popup__title::before {
-    content: "Title: ";
-}
-
-.gallery__popup__author::before {
-    content: "Author: ";
-}
-
-.gallery__popup__info::before {
-    content: ":( ";
-}
-
-.gallery__popup__years::before {
-    content: "Years of creation: ";
-}
-
-.gallery__popup__tag {
-    color: var(--light-blue);
-}
-
-.gallery__popup__tag::before {
-    content: "#";
-}
-
-@media (max-width: 769px) {
-
-    .gallery__card{
-        max-width: 250px;
-        max-height: auto;
-        transition: all 0.5s ease-out;
-        align-self: center;
-        justify-self: center;
-    }
-
-    .gallery__popup__card {
-        width: 400px;
-    }
-
-}
-
-@media (max-width: 481px) {
-
-    .gallery__card {
-        width: auto;
-        height: auto;
-    }
-
-    .gallery__card:hover {
-        padding: 10px;
+    &:hover {
+        padding: 0;
         transform: scale(1);
     }
 
-    .gallery__popup__image {
-        display: none;
+    @media (max-width: 1024px) {
+        max-width: 45vw;
+        max-height: 45vh;
+    }
+
+    @media (max-width: 481px) {
+        max-width: 80vw;
+        height: auto;
+    }
+}
+
+.gallery__popup {
+    &__card {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1rem;
+        max-width: 700px;
+
+        font-size: 1.1rem;
+
+        p {
+            padding: 0.2rem;
+        }
+    }
+
+    &__image {
+        display: block;
+        margin: 0 auto 1rem;
+        max-width: 100%;
+    }
+
+    &__title::before {
+        font-weight: bold;
+        content: "Title: ";
+    }
+
+    &__author::before {
+        font-weight: bold;
+        content: "Author: ";
+    }
+
+    &__url {
+        color: $link-color;
+        &:hover {
+            &::after {
+                content: "›";
+            }
+        }
+    }
+
+    &__years::before {
+        font-weight: bold;
+        content: "Years of creation: ";
+    }
+
+    &__tag {
+        float: right;
+        color: lighten($second-color, 50%);
+        &::before {
+            content: "#";
+        }
     }
 }

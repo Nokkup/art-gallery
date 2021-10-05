@@ -1,29 +1,27 @@
+@import "variables.scss";
+
 .footer {
-    grid-area: footer;
-
-    font-family: 'Quicksand', sans-serif;
-
     display: flex;
-    flex-flow: column;
-    justify-content: center;
+    flex-flow: row;
+
     align-items: center;
-    padding: 20px;
-    height: 40px;
+    justify-content: space-evenly;
+    column-gap: 0.5rem;
+    margin: 1rem auto;
 
-    background: rgba(255, 255, 255, 0.3);
-}
+    font-size: 1.1rem;
 
-.footer__year::before {
-    content: "©";
-}
+    &__link {
+        color: $link-color;
 
-.footer__link {
-    padding-top: 5px;
-    text-decoration: none;
-    color: var(--black)
-}
+        &:hover {
+            color: $link-color;
+        }
+    }
 
-.footer__link:hover {
-    text-decoration: underline;
-    color: var(--light-blue);
+    &__year {
+        &::before {
+            content: "©";
+        }
+    }
 }

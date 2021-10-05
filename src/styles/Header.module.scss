@@ -1,29 +1,30 @@
+@import "variables.scss";
+
 .header {
-    grid-area: header;
-    
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 
-    height: 90px;
-    background: var(--white);
+    background: $primary-color;
 
-    font-family: 'Quicksand', sans-serif;
-}
+    &__title {
+        display: inline;
 
-.header__title {
-    display: inline;
-}
+        @media (max-width: 769px) {
+            display: none;
+        }
+    }
 
-.header__logo img{
-    height: 50px;
-    width: 50px;
-    padding: 0 10px;
-}
+    &__logo {
+        a {
+            background-image: none;
+        }
 
-@media (max-width: 769px) {
-    .header__title {
-        display: none;
+        img {
+            height: 50px;
+            width: 50px;
+            padding: 0 10px;
+        }
     }
 }
