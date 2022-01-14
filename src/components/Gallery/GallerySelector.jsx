@@ -1,14 +1,14 @@
-import styles from "../styles/Selector.module.scss";
+import styles from "./GallerySelector.module.scss";
 
 
-const Selector = ({ departments, selected, setDepartment, setRefresh }) => {
+const GallerySelector = ({ departments, selected, setDepartment, setRefresh }) => {
     return (
         <div className={styles.selector}>
             <select
                 className={styles.selector__select}
                 value={selected}
                 onChange={e => setDepartment(e.target.value)}
-                tabIndex={2}
+                tabIndex={1}
             >
                 {
                     departments.map((el, i) => <option key={i} value={el.departmentId}>{el.displayName}</option>)
@@ -20,4 +20,4 @@ const Selector = ({ departments, selected, setDepartment, setRefresh }) => {
 
 }
 
-export default Selector;
+export default GallerySelector;
